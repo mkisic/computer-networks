@@ -3,7 +3,7 @@
 ## Pacman
 
 My goal was to create server and client network applications which will be able to play multiplayer Pacman game.
- Rules of the game were following:
+Rules of the game were following:
 
    1. Server will read from standard input number of players (up to 10) and the map.
    2. Server is waiting players to connect
