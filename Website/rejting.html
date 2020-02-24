@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hr">
+  <head>
+    <meta charset="utf-8" />
+    <title>International Collegiate Programming Contest</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+
+  <body>
+    <script>
+      function calculate() {
+        document.getElementById("output_place").innerHTML = "";
+        var ret = "Vas tim rejting je: ";
+        var team_rating = 0;
+        var a = document.getElementById("user1").value;
+        var b = document.getElementById("user2").value;
+        var c = document.getElementById("user3").value;
+        var url = "https://codeforces.com/api/user.info?handles="+
+          a + ";" + b + ";" + c
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var myArr = JSON.parse(this.responseText);
+            var n = myArr.result.length;
+            var left = 1;
+            var right = 10000;
+
+            for (var tt = 0; tt < 100; tt++) {
+              var r = (left + right) / 2.0;
+
+              var rWinsProbability = 1.0;
+              for (var i = 0; i < n; i++) {
+                rWinsProbability *= 1.0 / (1.0 + Math.pow(10.0, (myArr.result[i].rating - r) / 400.0));
+              }
+
+              var rating = Math.log10(1 / (rWinsProbability) - 1) * 400 + r;
+
+              if (rating > r)
+                left = r;
+              else
+                right = r;
+            }
+
+            team_rating = (left + right) / 2.0;
+            team_rating = Math.round((team_rating + Number.EPSILON) * 100) / 100
+            document.getElementById("output_place").innerHTML = ret + team_rating;
+            console.log(team_rating, left, right);
+          }
+        };
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+      }
+    </script>
+
+    <header id="main-header">
+      <div class="container" id="con2">
+        <h1>International Collegiate Programming Contest</h1>
+      </div> 
+    </header>
+
+    <nav id="navbar">
+      <ul>
+        <li><a href="index.html">O natjecanju</a></li>
+        <li><a href="hrvatska.html">Hrvatska na ICPC</a></li>
+        <li><a href="rejting.html">Izracunaj svoj rejting</a></li>
+      </ul>
+    </nav>
+
+    <div class="container" id="sadrzaj">
+      <div id="left">
+        <p> Ovdje mozes izracunti timski rejting svog tima po Codeforcesu. Potrebno je da u predvidjena polja desno uneses codeforces usernameove clanova tima i kliknes na gumbic "Izracunaj".</p>
+
+      </div>
+      <div id="right">
+        <aside id="sidebar">
+          <form>
+            <label for="user1">Username 1:</label>
+            <input type="text" id="user1" name="user1"><br>
+            <label for="user2">Username 2:</label>
+            <input type="text" id="user2" name="user2"><br>
+            <label for="user3">Username 3:</label>
+            <input type="text" id="user3" name="user3"><br><br>
+            <button type="button" onclick="calculate()">Izracunaj</button>
+          </form>
+          <div id="output"> 
+            <p id="output_place">  <p>
+          </div>
+        </aside>
+      </div>
+    </div>
+    <footer id="main-footer">
+      <p>
+      Mreze racunala, Marin Kisic
+      </p>
+    </footer>
+
+  </body>
+</html>
