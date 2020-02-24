@@ -43,7 +43,17 @@
 
             team_rating = (left + right) / 2.0;
             team_rating = Math.round((team_rating + Number.EPSILON) * 100) / 100
-            document.getElementById("output_place").innerHTML = ret + team_rating;
+            var boja = "Gray";
+            if (team_rating >= 1200) boja = "Green";
+            if (team_rating >= 1400) boja = "Cyan";
+            if (team_rating >= 1600) boja = "Blue";
+            if (team_rating >= 1900) boja = "Violet";
+            if (team_rating >= 2200) boja = "Orange";
+            if (team_rating >= 2400) boja = "Red";
+            if (team_rating >= 3000) boja = "Nutella";
+            document.getElementById("output_place").innerHTML = ret + 
+              '<p class="' + boja + '">' + team_rating + 
+              '</p>';
             console.log(team_rating, left, right);
           }
         };

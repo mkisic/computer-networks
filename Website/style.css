@@ -128,3 +128,48 @@ a {
   text-decoration: none;
 }
 
+p.Gray {
+  color: gray !important;
+  font-weight: bold;
+}
+
+p.Green {
+  color: green !important;
+  font-weight: bold;
+}
+
+p.Cyan {
+  color: #03A89E !important;
+  font-weight: bold;
+}
+
+p.Blue {
+  color: blue !important;
+  font-weight: bold;
+}
+
+p.Violet {
+  color: #a0a !important;
+  font-weight: bold;
+}
+
+p.Orange {
+  color: #FF8C00 !important;
+  font-weight: bold;
+}
+
+p.Red {
+  color: red !important;
+  font-weight: bold;
+}
+
+p.Nutella {
+  color: red !important;
+  font-weight: bold;
+}
+
+p.Nutella::first-letter {
+  color: black;
+  font-weight: bold;
+}
+
