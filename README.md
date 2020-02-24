@@ -13,3 +13,7 @@ Rules of the game were following:
    6. When some player makes a move, server will update the map and send it to all players.
    7. Game stops when some player and Pacman are on same field.
       At the end, server will send notification about the end of game and the number of steps which Pacman made it.
+
+
+## Website
+I had to create website using HTML, CSS and JS.
