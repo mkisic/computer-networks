@@ -16,4 +16,4 @@ Rules of the game were following:
 
 
 ## Website
-I had to create website using HTML, CSS and JS. Also, I'm using Codeforces API.
+I had to create website using HTML, CSS and JS. Also, I'm using [Codeforces API](https://codeforces.com/apiHelp).
